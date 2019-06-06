@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import br.ufrn.imd.controle.Leitura;
+import br.ufrn.imd.modelo.Similaridade;
 import br.ufrn.imd.modelo.WebScraping;
 
 public class Main {
@@ -36,6 +37,7 @@ public class Main {
 			e.printStackTrace();
 		}
 		
+	
 		Leitura l = new Leitura();
 		l.lerArquivo(4);
 		int contador =0;
@@ -45,7 +47,8 @@ public class Main {
 			if(contador>200) {
 				break;
 			}
-			if(contador>=0) {
+			
+			if(contador>20) {
 			
 			WebScraping web = new WebScraping(url);
 			
@@ -54,6 +57,7 @@ public class Main {
 				encontradas++;
 			}else {
 				System.out.println(contador);
+				System.out.println(url);
 				System.out.println("Notícia Fake news NÃO encontrada");
 				naoEncontradas++;
 			}							
@@ -64,5 +68,5 @@ public class Main {
 		System.out.println(encontradas);
 		System.out.println(naoEncontradas);
 	}
- 
+	
 }

@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+
+
 import br.ufrn.imd.modelo.FakeNews;
 
 public class Leitura {
@@ -30,10 +32,10 @@ public class Leitura {
 	public void lerArquivo(int tamanhoMinimo) {
 	 try{
          BufferedReader br = new BufferedReader(new FileReader("boatos.csv"));
-//         FileWriter arq1 = new FileWriter("conteudos.txt");
-//         FileWriter arq2 = new FileWriter("URLs.txt");
-//         PrintWriter gravarConteudo = new PrintWriter(arq1);
-//         PrintWriter gravarURL = new PrintWriter(arq2);
+         FileWriter arq1 = new FileWriter("conteudos.txt");
+         FileWriter arq2 = new FileWriter("URLs.txt");
+         PrintWriter gravarConteudo = new PrintWriter(arq1);
+         PrintWriter gravarURL = new PrintWriter(arq2);
          int indice = 0;  
          br.readLine();
          while(br.ready()){     	    
@@ -42,14 +44,14 @@ public class Leitura {
         		String linhaOriginal;
         		String hash;
         		String URL;
-        		String data;
-        		linhaOriginal = linha;        		
+        		String data;       	
         		data = separarData(linha);
         		URL = separarURL(linha);        		
-        		linha = separarConteudo(linha);     		
+        		linha = separarConteudo(linha);
+        		linhaOriginal = linha;
         		linha = removerAcentos(linha);
-//        		gravarConteudo.println(indice+":"+linha);
-//        		gravarURL.println(indice+":"+URL);
+        		gravarConteudo.println(indice+":"+linha);
+        		gravarURL.println(indice+":"+URL);
         		//armazenando o inicio e o fim do conteudo da fake news (20 primeiros e 20 ultimos)
         		if(linha.length()>30) {
         			inicioEfim.put(linha.substring(0,30),linha.substring(linha.length()-30,linha.length()));
@@ -62,8 +64,8 @@ public class Leitura {
         	    
         	
          }
-//         arq1.close();
-//         arq2.close();
+         arq1.close();
+         arq2.close();
          br.close();
       }catch(IOException ioe){
          ioe.printStackTrace();
@@ -85,7 +87,7 @@ public class Leitura {
 			}
 			return conteudo;	
 		}
-		return "Não foi possível separar o conteúdo";
+		return "Nï¿½o foi possï¿½vel separar o conteï¿½do";
 	}
 	
 	//Remove as palavras com menos de tamanhoMinimo de length e transforma todas as letras para menÃºsculas, alÃ©m de tambÃ©m retirar os acentos
@@ -98,7 +100,7 @@ public class Leitura {
 		String linhaFinal="";
 		for (int i = 0; i < linhaSeparada.length; i++) {
 			if(linhaSeparada[i].length()>=tamanhoMinimo) {
-				linhaFinal = linhaSeparada[i];
+				linhaFinal += linhaSeparada[i]+" ";
 			}
 		}
 		linha=linhaFinal;
@@ -112,8 +114,10 @@ public class Leitura {
 	
 	//remove todos os acentos
 	public String removerAcentos(String linha) {
-	    linha =Normalizer.normalize(linha, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
-	    linha = linha.replaceAll("[^a-zA-Z ]", "");	    
+	    linha =Normalizer.normalize(linha, Normalizer.Form.NFD).replaceAll("[^a-zA-Z ]", "");
+		linha = linha.replace("Mensagem ","");		
+		linha = linha.replace("Transcricao ","");		
+		linha = linha.replace("Versao  ","");	
 	    linha = linha.trim();
 	    return linha;
 	}
@@ -122,14 +126,20 @@ public class Leitura {
 	public String removerRepeticao(String linha) {
 		Set<String> palavras = new HashSet<String>();
 		String linhaFinal;
-		String[] linhaSeparada = linha.split(" "); 			
-		Arrays.sort(linhaSeparada);
+		String linhaAux;
+		String[] linhaSeparada1 = linha.split(" "); 					
+		for (int i = 0; i < linhaSeparada1.length; i++) {
+			palavras.add(linhaSeparada1[i]);
+		}	
 		
-		for (int i = 0; i < linhaSeparada.length; i++) {
-			palavras.add(linhaSeparada[i]);
-		}
 		linhaFinal = palavras.toString();
-				
+		String[] linhaSeparada2 = (linhaFinal.substring(1,linhaFinal.length()-1)).split(","); 
+		Arrays.sort(linhaSeparada2);
+		linhaFinal = "";
+		
+		for (int i = 0; i < linhaSeparada2.length; i++) {
+			linhaFinal += linhaSeparada2[i];
+		}
 		return linhaFinal;
 	}
 	
@@ -203,5 +213,9 @@ public class Leitura {
 			return false;
 		}
 		
+	}
+	
+	public HashMap<String,FakeNews> getBoatos(){
+		return boatos;
 	}
 }
