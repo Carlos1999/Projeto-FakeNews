@@ -115,7 +115,11 @@ public class Leitura {
 	//remove todos os acentos
 	public String removerAcentos(String linha) {
 	    linha =Normalizer.normalize(linha, Normalizer.Form.NFD).replaceAll("[^a-zA-Z ]", "");
-		linha = linha.replace("Mensagem ","");		
+	    linha = linha.replace("Declaracao ","");	
+	    linha = linha.replace("Transcricao da mensagem ","");
+	    linha = linha.replace("Texto da mensagem ","");
+	    linha = linha.replace("Texto no link de video ","");
+	    linha = linha.replace("Mensagem ","");		
 		linha = linha.replace("Transcricao ","");		
 		linha = linha.replace("Versao  ","");	
 	    linha = linha.trim();

@@ -48,7 +48,7 @@ public class Main {
 				break;
 			}
 			
-			if(contador>20) {
+			if(contador>=0) {
 			
 			WebScraping web = new WebScraping(url);
 			
