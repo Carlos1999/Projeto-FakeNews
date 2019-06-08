@@ -1,4 +1,4 @@
-package br.ufrn.imd.controle;
+package br.ufrn.imd.modelo;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,18 +7,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.text.Normalizer;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
-
-
-
-import br.ufrn.imd.modelo.FakeNews;
 
 public class Leitura {
 	private HashMap<String,FakeNews> boatos;
@@ -52,6 +45,7 @@ public class Leitura {
         		linha = removerAcentos(linha);
         		gravarConteudo.println(indice+":"+linha);
         		gravarURL.println(indice+":"+URL);
+        		System.out.println(linha);
         		//armazenando o inicio e o fim do conteudo da fake news (20 primeiros e 20 ultimos)
         		if(linha.length()>30) {
         			inicioEfim.put(linha.substring(0,30),linha.substring(linha.length()-30,linha.length()));
@@ -114,7 +108,8 @@ public class Leitura {
 	
 	//remove todos os acentos
 	public String removerAcentos(String linha) {
-	    linha =Normalizer.normalize(linha, Normalizer.Form.NFD).replaceAll("[^a-zA-Z ]", "");
+	    linha =Normalizer.normalize(linha, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
+	    linha = linha.replaceAll("[^a-zA-Z ]", "");
 	    linha = linha.replace("Declaracao ","");	
 	    linha = linha.replace("Transcricao da mensagem ","");
 	    linha = linha.replace("Texto da mensagem ","");
@@ -210,7 +205,7 @@ public class Leitura {
 	
 	
 	//retorna true se aquela notícia está armazenada
-	public boolean buscarFakeNews(String hash) {
+	public boolean containsFakeNews(String hash) {
 		if(boatos.containsKey(hash)) {
 			return true;
 		}else {

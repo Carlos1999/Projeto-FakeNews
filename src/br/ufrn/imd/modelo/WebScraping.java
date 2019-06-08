@@ -11,8 +11,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import br.ufrn.imd.controle.Leitura;
-
 public class WebScraping {
 	private Document doc;
 	private String url;
@@ -28,7 +26,7 @@ public class WebScraping {
 		}		
 	}
 	
-	public boolean buscar(Leitura l) {
+	public int buscar(Leitura l,double MinimaPorcentagem) {
 		Elements p = doc.select("p"); 	
 		String fakeNewsCompleta="";
 		String fakeNewsTratada;
@@ -38,7 +36,6 @@ public class WebScraping {
 			paragrafoString = paragrafo.text();
 			paragrafoString = l.removerAcentos(paragrafoString);
 			if(paragrafoString.length()>30) {
-			
 				if(l.inicioIgual(paragrafoString.substring(0,30))) {
 					coletaParagrafos = true;
 				}
@@ -55,29 +52,10 @@ public class WebScraping {
 			
 		}
 		
-		if(!fakeNewsCompleta.equals("")) {		
-			fakeNewsTratada = l.tratar(fakeNewsCompleta);	
-			fakeNewsTratada = l.gerarHash(fakeNewsTratada);				
-			//se for exatamente igual
-			if(l.buscarFakeNews(fakeNewsTratada)) {
-				return true;
-			}
-			System.out.println(fakeNewsCompleta);
-			HashMap<String,FakeNews> boatos = l.getBoatos();
-			
-			//vai iterar sobre o banco de dados
-			for (Entry<String, FakeNews> pair : boatos.entrySet()) {
-			    FakeNews f = pair.getValue();
-			    if(Similaridade.Jarodistance(l.tratar(fakeNewsCompleta), f.getProcessado())>0.85) {
-			    	System.out.println("Notícia é "+Similaridade.Jarodistance(l.tratar(fakeNewsCompleta),( f.getProcessado()))*100+"% compatível com uma notícia armazenada.");
-			    	System.out.println("Notícia do site: "+l.tratar(fakeNewsCompleta));
-			    	System.out.println("Notícia do banco: "+(f.getProcessado()));
-			    	return true;
-			    }
-			}
-			
-			
+		if(!fakeNewsCompleta.equals("")) {					
+			System.out.println(MinimaPorcentagem);
+			return BuscaFakeNews.buscar(fakeNewsCompleta, l,MinimaPorcentagem/100);
 		}
-		return false;
+		return 0;
 	}
 }
