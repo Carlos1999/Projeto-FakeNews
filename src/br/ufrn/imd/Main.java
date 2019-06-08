@@ -11,7 +11,9 @@ import javafx.stage.Stage;
 public class Main extends Application{
 	private static Stage stage;
 	private static Scene inicioScene;
-	private static Scene BuscarURLScene;
+	private static Scene BuscaURLScene;
+	private static Scene BuscaTextoScene;
+	private static Scene BuscaCompleta;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -23,14 +25,20 @@ public class Main extends Application{
 	public void start(Stage primaryStage)  {
 		// TODO Auto-generated method stub
 		stage = primaryStage;
-		primaryStage.setTitle("Sistema de Detecção de Fake News");
+		primaryStage.setTitle("Sistema de Detecï¿½ï¿½o de Fake News");
 		
 		try {
 			Parent fxmlMain = FXMLLoader.load(getClass().getResource("visao/Inicio.fxml"));
 			inicioScene = new Scene(fxmlMain,600,500); 
 			
-			Parent fxmlBuscarUrl = FXMLLoader.load(getClass().getResource("visao/BuscaURL.fxml"));
-			BuscarURLScene = new Scene(fxmlBuscarUrl,600,500); 
+			Parent fxmlBuscaUrl = FXMLLoader.load(getClass().getResource("visao/BuscaURL.fxml"));
+			BuscaURLScene = new Scene(fxmlBuscaUrl,600,500); 
+			
+			Parent fxmlBuscaTexto = FXMLLoader.load(getClass().getResource("visao/BuscaTexto.fxml"));
+			BuscaTextoScene = new Scene(fxmlBuscaCompleta,600,500); 
+			
+			Parent fxmlBuscaCompleta = FXMLLoader.load(getClass().getResource("visao/BuscaTexto.fxml"));
+			BuscaCompletaScene = new Scene(fxmlBuscaCompleta,600,500); 
 			
 			primaryStage.setScene(inicioScene);
 			primaryStage.show();
@@ -49,8 +57,14 @@ public class Main extends Application{
 				stage.setScene(inicioScene);
 				break;
 			case 1:
-				stage.setScene(BuscarURLScene);
+				stage.setScene(BuscaURLScene);
 				break;
+			case 2:
+				stage.setScene(BuscaTextoScene);
+				break;
+			case 3:
+				stage.setScene(BuscaCompleta);
+				break;	
 		}
 	
 	}

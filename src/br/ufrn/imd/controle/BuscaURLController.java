@@ -41,14 +41,14 @@ public class BuscaURLController {
 				valorInteiro =Integer.parseInt(textFieldMinimoPalavra.getText());
 				valorValido=true;
 			}catch (NumberFormatException e){
-				mostrarAlerta("Tamanho mínimo de palavras INVALIDO!","Informe um valor entre 0 e 10 ");
+				mostrarAlerta("Tamanho mï¿½nimo de palavras INVALIDO!","Informe um valor entre 0 e 10 ");
 				leituraEfetuada = false;
 				return;
 			}
 	
 		
 		if(valorInteiro<0||valorInteiro>10) {
-			mostrarAlerta("Tamanho mínimo de palavras INVALIDO!","Informe um valor entre 0 e 10 ");
+			mostrarAlerta("Tamanho mï¿½nimo de palavras INVALIDO!","Informe um valor entre 0 e 10 ");
 			leituraEfetuada = false;
 		}else {
 			l = new Leitura();
@@ -60,7 +60,7 @@ public class BuscaURLController {
     
     @FXML
     void duvidaLerArquivo(ActionEvent event) {
-    		mostrarAlerta("Ajuda","Palavras, no texto das notícias, com o tamanho menor do que o valor que você digitar no campo 'Tamanho mínimo de palavras' serão desconsideradas após o tratamento do arquivo.");
+    		mostrarAlerta("Ajuda","Palavras, no texto das notï¿½cias, com o tamanho menor do que o valor que vocï¿½ digitar no campo 'Tamanho mï¿½nimo de palavras' serï¿½o desconsideradas apï¿½s o tratamento do arquivo.");
     }
     
     @FXML
@@ -72,7 +72,7 @@ public class BuscaURLController {
     @FXML
     void buscarNoticiaUrl(ActionEvent event) {
     	if(!leituraEfetuada) {
-			mostrarAlerta("Erro", "Atenção, Primeiro efetue a leitura do Arquivo acima!");
+			mostrarAlerta("Erro", "Atenï¿½ï¿½o, Primeiro efetue a leitura do Arquivo acima!");
 			return;
 		}
     	
@@ -81,17 +81,17 @@ public class BuscaURLController {
     		int porcentagemFakeNews = web.buscar(l,sliderSimilaridade.getValue());
     		if(porcentagemFakeNews == 100) {
     			progressFakeNews.setProgress(100);
-    			mostrarAlerta("Encontrada", "Atenção, o site contém uma Fake News com 100% de compatibilidade com notícia armazenada");
+    			mostrarAlerta("Encontrada", "Atenï¿½ï¿½o, o site contï¿½m uma Fake News com 100% de compatibilidade com notï¿½cia armazenada");
     		}else if(porcentagemFakeNews>=sliderSimilaridade.getValue()) {
     			progressFakeNews.setProgress(porcentagemFakeNews);
-    			mostrarAlerta("Encontrada", "Atenção, o site contém uma Fake News com "+porcentagemFakeNews+"% de compatibilidade com notícia armazenada");
+    			mostrarAlerta("Encontrada", "Atenï¿½ï¿½o, o site contï¿½m uma Fake News com "+porcentagemFakeNews+"% de compatibilidade com notï¿½cia armazenada");
     		}else {
     			progressFakeNews.setProgress(0);
-    			mostrarAlerta("Não encontrada", "Fake news não se encontra no banco de dados");
+    			mostrarAlerta("Nï¿½o encontrada", "Fake news nï¿½o se encontra no banco de dados");
     		}
     	}catch (Exception e) {
     		e.printStackTrace();
-    		mostrarAlerta("Erro", "URL não corresponde a um site");
+    		mostrarAlerta("Erro", "URL nï¿½o corresponde a um site");
     	}
 		
 		
