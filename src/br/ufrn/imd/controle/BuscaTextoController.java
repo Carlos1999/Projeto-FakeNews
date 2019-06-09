@@ -1,32 +1,25 @@
 package br.ufrn.imd.controle;
 
-import br.ufrn.imd.modelo.Leitura;
+import br.ufrn.imd.modelo.BuscaFakeNews;
 import br.ufrn.imd.modelo.WebScraping;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 
-public class BuscaURLController extends BuscaController {
-    
+public class BuscaTextoController extends BuscaController{
 	@FXML
-    private TextField textFieldURL;
+	private TextArea textAreaTexto;
 	
-    @FXML
-    void buscarNoticiaUrl(ActionEvent event) {
-    	if(!leituraEfetuada) {
+	@FXML
+    void buscarTexto(ActionEvent event) {
+		if(!leituraEfetuada) {
 			mostrarAlerta("Erro", "Aten��o, Primeiro efetue a leitura do Arquivo acima!");
 			return;
 		}
     	
     	try {
-    		WebScraping web = new WebScraping(textFieldURL.getText());
-    		int porcentagemFakeNews = web.buscar(l,sliderSimilaridade.getValue()/100);
+    		
+    		int porcentagemFakeNews = BuscaFakeNews.buscar(textAreaTexto.getText(), l, sliderSimilaridade.getValue()/100);
     		if(porcentagemFakeNews == 100) {
     			progressFakeNews.setProgress(100);
     			mostrarAlerta("Encontrada", "Aten��o, o site cont�m uma Fake News com 100% de compatibilidade com not�cia armazenada");
@@ -41,6 +34,5 @@ public class BuscaURLController extends BuscaController {
     		e.printStackTrace();
     		mostrarAlerta("Erro", "URL n�o corresponde a um site");
     	}
-			
     }
 }

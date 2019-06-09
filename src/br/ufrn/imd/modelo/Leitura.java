@@ -50,7 +50,7 @@ public class Leitura {
         		if(linha.length()>30) {
         			inicioEfim.put(linha.substring(0,30),linha.substring(linha.length()-30,linha.length()));
         		}
-        		linha = tratar(linha);	     	
+        		linha = tratar(linha,tamanhoMinimo);	     	
         		hash = gerarHash(linha);
         	
         		FakeNews f = new FakeNews(linhaOriginal,linha,data,URL);
@@ -153,7 +153,6 @@ public class Leitura {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return "falha";
 	}
 	
@@ -180,8 +179,8 @@ public class Leitura {
 		return linhaSeparada[linhaSeparada.length-1];
 	}
 	
-	public String tratar(String linha) {
-		linha = removerPalavrasPequenas(linha, 4);
+	public String tratar(String linha,int tamanhoMinimo) {
+		linha = removerPalavrasPequenas(linha, tamanhoMinimo);
 		linha = removerRepeticao(linha);
 		return linha;
 	}

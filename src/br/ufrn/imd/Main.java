@@ -13,7 +13,7 @@ public class Main extends Application{
 	private static Scene inicioScene;
 	private static Scene BuscaURLScene;
 	private static Scene BuscaTextoScene;
-	private static Scene BuscaCompleta;
+	private static Scene BuscaCompletaScene;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -35,10 +35,11 @@ public class Main extends Application{
 			BuscaURLScene = new Scene(fxmlBuscaUrl,600,500); 
 			
 			Parent fxmlBuscaTexto = FXMLLoader.load(getClass().getResource("visao/BuscaTexto.fxml"));
-			BuscaTextoScene = new Scene(fxmlBuscaCompleta,600,500); 
+			BuscaTextoScene = new Scene(fxmlBuscaTexto,600,500); 
 			
-			Parent fxmlBuscaCompleta = FXMLLoader.load(getClass().getResource("visao/BuscaTexto.fxml"));
+			Parent fxmlBuscaCompleta = FXMLLoader.load(getClass().getResource("visao/BuscaCompleta.fxml"));
 			BuscaCompletaScene = new Scene(fxmlBuscaCompleta,600,500); 
+			
 			
 			primaryStage.setScene(inicioScene);
 			primaryStage.show();
@@ -63,7 +64,7 @@ public class Main extends Application{
 				stage.setScene(BuscaTextoScene);
 				break;
 			case 3:
-				stage.setScene(BuscaCompleta);
+				stage.setScene(BuscaCompletaScene);
 				break;	
 		}
 	

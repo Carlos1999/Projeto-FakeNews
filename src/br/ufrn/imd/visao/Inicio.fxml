@@ -5,18 +5,17 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="br.ufrn.imd.controle.InicioController">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controle.InicioController">
    <children>
       <MenuBar prefHeight="500.0" prefWidth="600.0">
         <menus>
           <Menu mnemonicParsing="false" text="Analizar Notícia">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Inserir Texto Manualmente" />
+                  <MenuItem mnemonicParsing="false" onAction="#abrirTelaBuscarTexto" text="Inserir Texto Manualmente" />
               <MenuItem mnemonicParsing="false" onAction="#abrirTelaBuscarURL" text="Buscar notícia no site" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Busca Completa Arquivo">
+          <Menu mnemonicParsing="false" onAction="#abrirTelaBuscaCompleta" text="Busca Completa Arquivo">
             <items>
               <MenuItem mnemonicParsing="false" text="Buscar" />
             </items>
