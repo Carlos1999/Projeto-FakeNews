@@ -26,7 +26,7 @@ public class WebScraping {
 		}		
 	}
 	
-	public int buscar(Leitura l,double MinimaPorcentagem) {
+	public String buscar(Leitura l,double MinimaPorcentagem, int tamanhoMinimo) {
 		Elements p = doc.select("p"); 	
 		String fakeNewsCompleta="";
 		String fakeNewsTratada;
@@ -53,9 +53,8 @@ public class WebScraping {
 		}
 		
 		if(!fakeNewsCompleta.equals("")) {					
-			System.out.println(MinimaPorcentagem);
-			return BuscaFakeNews.buscar(fakeNewsCompleta, l,MinimaPorcentagem/100);
+			return fakeNewsCompleta;
 		}
-		return 0;
+		return "erro";
 	}
 }

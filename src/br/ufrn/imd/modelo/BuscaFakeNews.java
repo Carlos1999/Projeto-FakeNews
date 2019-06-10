@@ -5,8 +5,8 @@ import java.util.Map.Entry;
 
 public class BuscaFakeNews {
 
-	public static int buscar(String boato,Leitura l,double MinimaPorcentagem) {
-		String boatoTratado = l.tratar(boato);
+	public static int buscar(String boato,Leitura l,double MinimaPorcentagem,int tamanhoMinimo) {
+		String boatoTratado = l.tratar(boato,tamanhoMinimo);
 		String boatoHash = l.gerarHash(boatoTratado);
 		if(l.containsFakeNews(boatoHash)) {
 			return 100;

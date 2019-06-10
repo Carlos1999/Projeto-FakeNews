@@ -13,26 +13,30 @@ public class BuscaTextoController extends BuscaController{
 	@FXML
     void buscarTexto(ActionEvent event) {
 		if(!leituraEfetuada) {
-			mostrarAlerta("Erro", "Atenï¿½ï¿½o, Primeiro efetue a leitura do Arquivo acima!");
+			mostrarAlerta("Erro", "Atenção, Primeiro efetue a leitura do Arquivo acima!");
 			return;
 		}
     	
     	try {
     		
-    		int porcentagemFakeNews = BuscaFakeNews.buscar(textAreaTexto.getText(), l, sliderSimilaridade.getValue()/100);
+    		int porcentagemFakeNews = BuscaFakeNews.buscar(l.removerAcentos(textAreaTexto.getText()), l, sliderSimilaridade.getValue()/100,valorInteiro);
     		if(porcentagemFakeNews == 100) {
-    			progressFakeNews.setProgress(100);
-    			mostrarAlerta("Encontrada", "Atenï¿½ï¿½o, o site contï¿½m uma Fake News com 100% de compatibilidade com notï¿½cia armazenada");
+    			progressFakeNews.setProgress(1);
+    			labelResultado.setText(100+"%");
+    			mostrarAlerta("Encontrada", "Atenção, o site contém uma Fake News com 100% de compatibilidade com notícia armazenada");
+    			
     		}else if(porcentagemFakeNews>=sliderSimilaridade.getValue()) {
-    			progressFakeNews.setProgress(porcentagemFakeNews);
-    			mostrarAlerta("Encontrada", "Atenï¿½ï¿½o, o site contï¿½m uma Fake News com "+porcentagemFakeNews+"% de compatibilidade com notï¿½cia armazenada");
+    			progressFakeNews.setProgress((double)porcentagemFakeNews/100);
+    			labelResultado.setText(porcentagemFakeNews+"%");
+    			mostrarAlerta("Encontrada", "Atenção, o site contém uma Fake News com "+porcentagemFakeNews+"% de compatibilidade com notícia armazenada");    			
     		}else {
-    			progressFakeNews.setProgress(0);
-    			mostrarAlerta("Nï¿½o encontrada", "Fake news nï¿½o se encontra no banco de dados");
+    			progressFakeNews.setProgress((double)porcentagemFakeNews/100);
+    			labelResultado.setText(porcentagemFakeNews+"%");
+    			mostrarAlerta("Não encontrada", "Fake news não se encontra no banco de dados");
     		}
+    		
     	}catch (Exception e) {
-    		e.printStackTrace();
-    		mostrarAlerta("Erro", "URL nï¿½o corresponde a um site");
+    		mostrarAlerta("Erro", "Texto Inválido");
     	}
     }
 }

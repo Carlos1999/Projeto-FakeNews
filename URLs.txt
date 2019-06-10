@@ -115,8 +115,6 @@
 115:https://www.boatos.org/politica/tse-codigos-urnas-venezuela.html
 116:https://www.boatos.org/politica/audio-bolsonaro-enfermeira-teatro.html
 117:https://www.boatos.org/politica/smartmatic-apuracao-eleicoes-brasil.html
-118:erro em separar URL
-119:https://www.boatos.org/politica/bonner-haddad-bolsonaro-investigado.html
 120:https://www.boatos.org/politica/multidao-apoio-bolsonaro-natal-campinas.html
 121:https://www.boatos.org/politica/dinheiro-guine-equatorial-haddad-pt.html
 122:https://www.boatos.org/religiao/estatua-baphomet-inaugurada-em-oklahoma.html
@@ -149,7 +147,7 @@
 149:https://www.boatos.org/politica/atentado-bolsonaro-forjado-sangue.html
 150:https://www.boatos.org/politica/adelio-bispo-oliveira-filiado-pt.html
 151:https://www.boatos.org/politica/eleitores-lula-protesto-times.html
-152:erro em separar URL
+152:
 153:https://www.boatos.org/politica/diogo-mainardi-votos-bolsonaro.html
 154:https://www.boatos.org/politica/eike-batista-partido-novo.html
 155:https://www.boatos.org/entretenimento/ministerio-museu-nacional-lei-rouanet.html
@@ -160,8 +158,6 @@
 160:https://www.boatos.org/tecnologia/algoritmo-facebook-posts-25-amigos.html
 161:https://www.boatos.org/politica/arnaldo-jabor-bolsonaro-votar.html
 162:https://www.boatos.org/politica/george-soros-texto-joao-amoedo.html
-163:erro em separar URL
-164:erro em separar URL
 165:https://www.boatos.org/politica/comando-vermelho-cartaz-bolsonaro-rio.html
 166:https://www.boatos.org/saude/celular-escuro-maculopatia-cancer-olho.html
 167:https://www.boatos.org/politica/planserv-bahia-vendida-qualicorp.html
@@ -349,7 +345,6 @@
 349:https://www.boatos.org/mundo/ovos-plastico-china-boato.html
 350:https://www.boatos.org/ciencia/marcela-pereira-concurso-fisica-nuclear.html
 351:https://www.boatos.org/brasil/arrastao-avenida-radial-leste-sao-paulo.html
-352:erro em separar URL
 353:https://www.boatos.org/tecnologia/instagram-limitou-alcance-posts.html
 354:https://www.boatos.org/politica/chupa-cabra-urna-eletronica.html
 355:https://www.boatos.org/esporte/pai-batiza-filho-vaineymar-registra.html
@@ -890,7 +885,7 @@
 890:https://www.boatos.org/brasil/vaquinha-tatuagem-testa-1-milhao.html
 891:https://www.boatos.org/brasil/videomonitoramento-transito-todo-brasil.html
 892:https://www.boatos.org/mundo/baleia-12-metros-fazenda.html
-893:erro em separar URL
+893:
 894:https://www.boatos.org/brasil/boeing-compra-acoes-embraer.html
 895:https://www.boatos.org/mundo/gandhi-professor-peters-universidade.html
 896:https://www.boatos.org/entretenimento/jackie-chan-morreu-2017-luto.html
@@ -1047,8 +1042,7 @@
 1047:https://www.boatos.org/brasil/policia-manifestacao-reforma-previdencia.html
 1048:https://www.boatos.org/brasil/kopenhagen-1000-ovos-pascoa.html
 1049:https://www.boatos.org/politica/ciro-gomes-bom-dia-brasil.html
-1050:erro em separar URL
-1051:https://www.boatos.org/brasil/fernanda-montenegro-falando-homens.html
+1050:
 1052:https://www.boatos.org/brasil/assassino-criancas-procurado-matar.html
 1053:https://www.boatos.org/brasil/falsos-funcionarios-net-assaltos.html
 1054:https://www.boatos.org/brasil/chaveiro-cachimbo-colorido-drogas.html
@@ -1136,7 +1130,7 @@
 1136:https://www.boatos.org/entretenimento/lorota-foto-mostra-steven-spielberg-cacando-dinossauros.html
 1137:https://www.boatos.org/politica/noticia-falsa-camara-dos-deputados-aprova-fim-13o-salario.html
 1138:https://www.boatos.org/mundo/bonecas-humanas-escravas-europa.html
-1139:erro em separar URL
+1139:
 1140:https://www.boatos.org/brasil/mentira-flanelinhas-borrifam-acido-em-vidros-de-carros-semaforo.html
 1141:https://www.boatos.org/brasil/hoax-bandidos-usam-droga-burundanga-escopolamina-para-assaltos.html
 1142:https://www.boatos.org/mundo/historia-falsa-mulher-morre-atingida-por-estaca-de-urina-congelada.html

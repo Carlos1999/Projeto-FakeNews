@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane prefHeight="421.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controle.NavegadorController">
+   <children>
+      <WebView fx:id="webView" layoutY="48.0" prefHeight="374.0" prefWidth="700.0" />
+      <Separator layoutY="46.0" prefHeight="3.0" prefWidth="700.0" />
+      <Label layoutX="284.0" prefHeight="30.0" prefWidth="172.0" text="Navegador">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Separator layoutY="422.0" prefHeight="3.0" prefWidth="700.0" />
+      <Label layoutX="748.0" layoutY="8.0" prefHeight="30.0" prefWidth="132.0" text="Ler Arquivo">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="736.0" layoutY="49.0" prefHeight="30.0" prefWidth="188.0" text="Tamanho mínimo de palavra:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldMinimoPalavra" layoutX="755.0" layoutY="79.0" prefHeight="22.0" prefWidth="59.0" />
+      <Button layoutX="826.0" layoutY="79.0" mnemonicParsing="false" onAction="#LerArquivo" text="Ler" />
+      <Button layoutX="873.0" layoutY="79.0" mnemonicParsing="false" onAction="#duvidaLerArquivo" prefHeight="22.0" prefWidth="7.0" text="?" />
+      <Separator layoutX="700.0" layoutY="266.0" prefHeight="3.0" prefWidth="250.0" />
+      <Button layoutX="775.0" layoutY="235.0" mnemonicParsing="false" onAction="#buscarNoSite" prefHeight="18.0" prefWidth="86.0" text="Buscar no Site" />
+      <Slider fx:id="sliderSimilaridade" layoutX="731.0" layoutY="164.0" onMouseReleased="#sliderMoveu" prefHeight="13.0" prefWidth="188.0" />
+      <Label layoutX="731.0" layoutY="190.0" text="0%" />
+      <Label layoutX="889.0" layoutY="190.0" text="100%" />
+      <Label layoutX="747.0" layoutY="125.0" text="Similaridade Aceitável">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="sliderValor" layoutX="818.0" layoutY="190.0" prefHeight="14.0" prefWidth="32.0" text="0%" />
+      <Label layoutX="765.0" layoutY="267.0" text="Resultado">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="progressFakeNews" layoutX="706.0" layoutY="325.0" prefWidth="200.0" progress="0.0" />
+      <Label layoutX="747.0" layoutY="297.0" text="Nível de Similaridade:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="829.0" layoutY="393.0" mnemonicParsing="false" onAction="#botaoVoltar" text="Voltar" />
+      <Button layoutX="885.0" layoutY="393.0" mnemonicParsing="false" onAction="#botaoFechar" text="Fechar" />
+      <Label fx:id="labelResultado" layoutX="916.0" layoutY="327.0" text="0%" />
+      <Separator layoutX="693.0" layoutY="422.0" prefHeight="3.0" prefWidth="250.0" />
+      <Button fx:id="buttonLigado" layoutX="615.0" layoutY="12.0" mnemonicParsing="false" onAction="#botaoLigar" text="Desligado" />
+      <Separator layoutX="696.0" layoutY="1.0" orientation="VERTICAL" prefHeight="422.0" prefWidth="3.0" />
+      <Separator layoutX="700.0" layoutY="111.0" prefHeight="3.0" prefWidth="250.0" />
+      <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#botaoReload" text="Reload" />
+      <Button layoutX="73.0" layoutY="12.0" mnemonicParsing="false" onAction="#botaoGoogle" text="Google" />
+   </children>
+</AnchorPane>

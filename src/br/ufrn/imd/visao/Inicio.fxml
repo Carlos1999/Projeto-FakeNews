@@ -3,11 +3,13 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controle.InicioController">
+<AnchorPane prefHeight="300.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controle.InicioController">
    <children>
-      <MenuBar prefHeight="500.0" prefWidth="600.0">
+      <MenuBar prefHeight="26.0" prefWidth="577.0">
         <menus>
           <Menu mnemonicParsing="false" text="Analizar Notícia">
             <items>
@@ -17,15 +19,25 @@
           </Menu>
           <Menu mnemonicParsing="false" onAction="#abrirTelaBuscaCompleta" text="Busca Completa Arquivo">
             <items>
-              <MenuItem mnemonicParsing="false" text="Buscar" />
+              <MenuItem mnemonicParsing="false" text="Abrir" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Navegar">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#abrirTelaNavegador" text="Abrir Navegador" />
+              </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Ajuda">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#botaoAjuda" text="About" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
+      <ImageView fx:id="imagem" fitHeight="320.0" fitWidth="586.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../ImagemInicio.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

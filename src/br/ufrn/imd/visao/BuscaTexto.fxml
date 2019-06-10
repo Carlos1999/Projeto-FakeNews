@@ -52,7 +52,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="sliderValor" layoutX="521.0" layoutY="299.0" text="0" />
+      <Label fx:id="sliderValor" layoutX="521.0" layoutY="299.0" text="0%" />
       <Label layoutX="248.0" layoutY="391.0" text="Resultado">
          <font>
             <Font size="24.0" />
@@ -67,5 +67,6 @@
       <TextArea fx:id="textAreaTexto" layoutX="223.0" layoutY="195.0" prefHeight="81.0" prefWidth="200.0" />
       <Button layoutX="480.0" layoutY="464.0" mnemonicParsing="false" onAction="#botaoVoltar" text="Voltar" />
       <Button layoutX="534.0" layoutY="464.0" mnemonicParsing="false" onAction="#botaoFechar" text="Fechar" />
+      <Label fx:id="labelResultado" layoutX="410.0" layoutY="439.0" text="0%" />
    </children>
 </AnchorPane>

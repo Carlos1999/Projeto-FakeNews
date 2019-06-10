@@ -14,6 +14,7 @@ public class Main extends Application{
 	private static Scene BuscaURLScene;
 	private static Scene BuscaTextoScene;
 	private static Scene BuscaCompletaScene;
+	private static Scene NavegadorScene;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -25,11 +26,11 @@ public class Main extends Application{
 	public void start(Stage primaryStage)  {
 		// TODO Auto-generated method stub
 		stage = primaryStage;
-		primaryStage.setTitle("Sistema de Detecï¿½ï¿½o de Fake News");
+		primaryStage.setTitle("Sistema de Detecção de Fake News");
 		
 		try {
 			Parent fxmlMain = FXMLLoader.load(getClass().getResource("visao/Inicio.fxml"));
-			inicioScene = new Scene(fxmlMain,600,500); 
+			inicioScene = new Scene(fxmlMain,574,320); 
 			
 			Parent fxmlBuscaUrl = FXMLLoader.load(getClass().getResource("visao/BuscaURL.fxml"));
 			BuscaURLScene = new Scene(fxmlBuscaUrl,600,500); 
@@ -38,8 +39,10 @@ public class Main extends Application{
 			BuscaTextoScene = new Scene(fxmlBuscaTexto,600,500); 
 			
 			Parent fxmlBuscaCompleta = FXMLLoader.load(getClass().getResource("visao/BuscaCompleta.fxml"));
-			BuscaCompletaScene = new Scene(fxmlBuscaCompleta,600,500); 
+			BuscaCompletaScene = new Scene(fxmlBuscaCompleta,600,630); 
 			
+			Parent fxmlNavegador = FXMLLoader.load(getClass().getResource("visao/Navegador.fxml"));
+			NavegadorScene = new Scene(fxmlNavegador,950,421); 
 			
 			primaryStage.setScene(inicioScene);
 			primaryStage.show();
@@ -66,6 +69,9 @@ public class Main extends Application{
 			case 3:
 				stage.setScene(BuscaCompletaScene);
 				break;	
+			case 4:
+				stage.setScene(NavegadorScene);
+				break;		
 		}
 	
 	}

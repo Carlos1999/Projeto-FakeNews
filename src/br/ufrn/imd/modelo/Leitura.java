@@ -1,9 +1,11 @@
 package br.ufrn.imd.modelo;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -24,7 +26,7 @@ public class Leitura {
 	
 	public void lerArquivo(int tamanhoMinimo) {
 	 try{
-         BufferedReader br = new BufferedReader(new FileReader("boatos.csv"));
+         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("boatos.csv"),"UTF-8"));
          FileWriter arq1 = new FileWriter("conteudos.txt");
          FileWriter arq2 = new FileWriter("URLs.txt");
          PrintWriter gravarConteudo = new PrintWriter(arq1);
@@ -41,11 +43,14 @@ public class Leitura {
         		data = separarData(linha);
         		URL = separarURL(linha);        		
         		linha = separarConteudo(linha);
+        		//ignorando linhas com defeito
+        		if(linha.equals("")) {
+        			continue;
+        		}
         		linhaOriginal = linha;
         		linha = removerAcentos(linha);
         		gravarConteudo.println(indice+":"+linha);
         		gravarURL.println(indice+":"+URL);
-        		System.out.println(linha);
         		//armazenando o inicio e o fim do conteudo da fake news (20 primeiros e 20 ultimos)
         		if(linha.length()>30) {
         			inicioEfim.put(linha.substring(0,30),linha.substring(linha.length()-30,linha.length()));
@@ -71,6 +76,9 @@ public class Leitura {
 		String[] linhaSeparada;
 		linhaSeparada = linha.split(",");
 		String conteudo="";
+		if(linhaSeparada.length<1) {
+			return "";
+		}
 		if(linhaSeparada.length>3) {
 			for (int i = 1; i < linhaSeparada.length-2; i++) {
 				conteudo+=linhaSeparada[i];
@@ -81,7 +89,8 @@ public class Leitura {
 			}
 			return conteudo;	
 		}
-		return "N�o foi poss�vel separar o conte�do";
+		
+		return "";
 	}
 	
 	//Remove as palavras com menos de tamanhoMinimo de length e transforma todas as letras para menúsculas, além de também retirar os acentos
@@ -159,6 +168,9 @@ public class Leitura {
 	public String separarURL(String linha) {
 		String[] linhaSeparada;
 		linhaSeparada = linha.split(",");
+		if(linhaSeparada.length<1) {
+			return "";
+		}
 		for (int i = 0; i < linhaSeparada.length; i++) {
 			if(linhaSeparada[i].length()>7) {
 				if(linhaSeparada[i].substring(0,8).equals("https://")) {
@@ -167,14 +179,17 @@ public class Leitura {
 			}
 			
 		}
-		return "erro em separar URL";
+		return "";
 	}
 	
 	public String separarData(String linha) {
 		String[] linhaSeparada;
 		linhaSeparada = linha.split(",");
+		if(linhaSeparada.length<1) {
+			return "";
+		}
 		if(linhaSeparada[linhaSeparada.length-1].length()>20) {
-			return "Erro ao pegar a data";
+			return "";
 		}		
 		return linhaSeparada[linhaSeparada.length-1];
 	}

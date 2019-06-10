@@ -1,25 +1,73 @@
 package br.ufrn.imd.controle;
 
+import com.sun.xml.internal.ws.api.pipe.Engine;
+
 import br.ufrn.imd.modelo.BuscaFakeNews;
 import br.ufrn.imd.modelo.WebScraping;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.input.DragEvent;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 
-public class BuscaURLController extends BuscaController {
-    
+public class NavegadorController extends BuscaController {
 	@FXML
-    private TextField textFieldURL;
+    private WebView webView;
 	
-    @FXML
-    void buscarNoticiaUrl(ActionEvent event) {
-    	if(!leituraEfetuada) {
+	@FXML
+    private Button buttonLigado;
+	
+	private WebEngine engine;
+	
+	@FXML
+    void botaoLigar(ActionEvent event) {
+		if(buttonLigado.getText().equals("Desligado")) {
+			buttonLigado.setText("Ligado");
+			engine = webView.getEngine();
+			engine.load("https://www.google.com/");
+			webView.setVisible(true);
+		}else {
+			buttonLigado.setText("Desligado");
+			webView.setVisible(false);
+		}
+    }
+	
+	 @FXML
+	 void botaoGoogle(ActionEvent event) {
+		 if(buttonLigado.getText().equals("Desligado")) {
+				mostrarAlerta("Erro","Primeiro ligue o navegador!");
+			}else {
+				engine.load("https://www.google.com/");
+			}
+	 }
+
+	 @FXML
+	 void botaoReload(ActionEvent event) {
+		 if(buttonLigado.getText().equals("Desligado")) {
+				mostrarAlerta("Erro","Primeiro ligue o navegador!");
+			}else {
+				engine.reload();
+			}
+	  }
+	@FXML
+    void buscarNoSite(ActionEvent event) {
+		String URL = "";
+		if(buttonLigado.getText().equals("Desligado")) {
+			mostrarAlerta("Erro","Primeiro ligue o navegador!");
+			return;
+		}
+
+		 URL = engine.getLocation();
+		
+		if(!leituraEfetuada) {
 			mostrarAlerta("Erro", "Atencão, Primeiro efetue a leitura do Arquivo acima!");
 			return;
 		}
     	
     	try {
-    		WebScraping web = new WebScraping(textFieldURL.getText());
+    		WebScraping web = new WebScraping(URL);
     		String fakeNewsCompleta = web.buscar(l,sliderSimilaridade.getValue()/100,valorInteiro);
     		int porcentagemFakeNews = BuscaFakeNews.buscar(fakeNewsCompleta, l,sliderSimilaridade.getValue()/100,valorInteiro);
     		if(porcentagemFakeNews == 100) {
