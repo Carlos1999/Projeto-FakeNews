@@ -2,9 +2,6 @@ package br.ufrn.imd.modelo;
 
 public class Similaridade {
 	
-	public Similaridade() {
-		
-	}
 	
     public static double Jarodistance(String s, String t) {
         int s_len = s.length();
@@ -33,7 +30,7 @@ public class Similaridade {
                 t_matches[j] = true;
                 matches++;
                 break;
-            }
+            } 
         }
  
         if (matches == 0)

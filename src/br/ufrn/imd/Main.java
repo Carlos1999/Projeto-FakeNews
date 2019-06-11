@@ -26,7 +26,7 @@ public class Main extends Application{
 	public void start(Stage primaryStage)  {
 		// TODO Auto-generated method stub
 		stage = primaryStage;
-		primaryStage.setTitle("Sistema de Detecção de Fake News");
+		primaryStage.setTitle("Sistema de DetecÃ§Ã£o de Fake News");
 		
 		try {
 			Parent fxmlMain = FXMLLoader.load(getClass().getResource("visao/Inicio.fxml"));

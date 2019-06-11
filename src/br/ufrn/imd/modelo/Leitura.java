@@ -2,7 +2,6 @@ package br.ufrn.imd.modelo;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -95,8 +94,6 @@ public class Leitura {
 	
 	//Remove as palavras com menos de tamanhoMinimo de length e transforma todas as letras para menúsculas, além de também retirar os acentos
 	public String removerPalavrasPequenas(String linha,int tamanhoMinimo) {
-		int espacoEncontrado=0;
-		String palavra="";
 				
 		String[] linhaSeparada;
 		linhaSeparada = linha.split(" ");
@@ -134,7 +131,6 @@ public class Leitura {
 	public String removerRepeticao(String linha) {
 		Set<String> palavras = new HashSet<String>();
 		String linhaFinal;
-		String linhaAux;
 		String[] linhaSeparada1 = linha.split(" "); 					
 		for (int i = 0; i < linhaSeparada1.length; i++) {
 			palavras.add(linhaSeparada1[i]);

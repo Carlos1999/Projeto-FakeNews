@@ -1,10 +1,6 @@
 package br.ufrn.imd.modelo;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -13,23 +9,20 @@ import org.jsoup.select.Elements;
 
 public class WebScraping {
 	private Document doc;
-	private String url;
 	
 	public WebScraping(String url) {
-		this.url = url;
 		
 		try {
 			doc = Jsoup.connect(url).get();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}		
 	}
 	
 	public String buscar(Leitura l,double MinimaPorcentagem, int tamanhoMinimo) {
 		Elements p = doc.select("p"); 	
 		String fakeNewsCompleta="";
-		String fakeNewsTratada;
 		boolean coletaParagrafos = false;
 		String paragrafoString;
 		for(Element paragrafo:p) {
